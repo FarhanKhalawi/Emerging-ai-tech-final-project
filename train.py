@@ -35,3 +35,33 @@ test_data  = full_train.select(range(12000, 14000))
 print("Train size:", len(train_data))
 print("Validation size:", len(val_data))
 print("Test size:", len(test_data))
+
+
+def format_example(example):
+    instruction = example["instruction"]
+    input_text = example["input"]
+    output_text = example["output"]
+
+    if input_text:
+        prompt = f"Instruction: {instruction}\nInput: {input_text}\nResponse:"
+    else:
+        prompt = f"Instruction: {instruction}\nResponse:"
+
+    return {
+        "prompt": prompt,
+        "label": output_text,
+    }
+
+# -------------------------------
+# 3. Format train/val/test
+# -------------------------------
+train_data = train_data.map(format_example)
+val_data   = val_data.map(format_example)
+test_data  = test_data.map(format_example)
+
+# Print one example to check
+print("Example formatted prompt:")
+print(train_data[0]["prompt"])
+print("-----")
+print("Label:")
+print(train_data[0]["label"])
