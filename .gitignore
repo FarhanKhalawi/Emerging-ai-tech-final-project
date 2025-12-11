@@ -3,3 +3,18 @@
 
 # Ignore data folder 
 data/
+
+.python-version
+
+
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pkl
+*.tmp
+
+# Bytecode cache inside folders
+**/__pycache__/
+
+pyproject.toml

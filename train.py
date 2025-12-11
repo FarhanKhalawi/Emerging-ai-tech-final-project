@@ -1,7 +1,12 @@
 import os
-import random
 import time
+import random
+import math
 from typing import Any, Dict, List
+
+import numpy as np
+import torch
+import matplotlib.pyplot as plt
 
 from datasets import load_dataset
 from transformers import (
@@ -10,50 +15,24 @@ from transformers import (
     TrainingArguments,
     Trainer,
     DataCollatorForLanguageModeling,
+    set_seed,
 )
 from peft import LoraConfig, get_peft_model
-import torch
-import math
-import matplotlib.pyplot as plt
 
-SEED = 42
+from config import Config
 
-# -------------------------------
-# 0. Read Hugging Face token
-# -------------------------------
-HF_TOKEN = os.getenv("HUGGINGFACE_HUB_TOKEN")
 
-if HF_TOKEN is None:
-    raise ValueError(
-        "HUGGINGFACE_HUB_TOKEN is not set. "
-        "Run: export HUGGINGFACE_HUB_TOKEN=hf_your_token_here"
-    )
+def set_all_seeds(seed: int) -> None:
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
+    set_seed(seed)
 
-# -------------------------------
-# 1. Load dataset
-# -------------------------------
-dataset = load_dataset("yahma/alpaca-cleaned")
-print(dataset)
 
-# -------------------------------
-# 2. Shuffle and split dataset (10k / 2k / 2k)
-# -------------------------------
-random.seed(SEED)
-full_train = dataset["train"].shuffle(seed=SEED)
-
-train_data = full_train.select(range(0, 10000))
-val_data   = full_train.select(range(10000, 12000))
-test_data  = full_train.select(range(12000, 14000))
-
-print("Train size:", len(train_data))
-print("Validation size:", len(val_data))
-print("Test size:", len(test_data))
-
-# -------------------------------
-# 3. Format examples into prompt + label (for inspection)
-#    Training text will be prompt + label.
-# -------------------------------
 def format_example(example: Dict[str, Any]) -> Dict[str, str]:
+
     instruction = example["instruction"]
     input_text  = example["input"]
     output_text = example["output"]
@@ -63,205 +42,242 @@ def format_example(example: Dict[str, Any]) -> Dict[str, str]:
     else:
         prompt = f"Instruction: {instruction}\nResponse:"
 
-    return {
-        "prompt": prompt,
-        "label": output_text,
-    }
+    return {"prompt": prompt, "label": output_text}
 
-train_data = train_data.map(format_example)
-val_data   = val_data.map(format_example)
-test_data  = test_data.map(format_example)
 
-print("Example formatted prompt:")
-print(train_data[0]["prompt"])
-print("-----")
-print("Label:")
-print(train_data[0]["label"])
+def tokenize_function(batch: Dict[str, List[str]], tokenizer, max_length: int) -> Dict[str, Any]:
+    
 
-# -------------------------------
-# 4. Load tokenizer (with token)
-# -------------------------------
-print("Loading tokenizer...")
-tokenizer = AutoTokenizer.from_pretrained(
-    "meta-llama/Llama-3.2-1B",
-    token=HF_TOKEN,
-)
-
-if tokenizer.pad_token is None:
-    tokenizer.pad_token = tokenizer.eos_token
-
-# -------------------------------
-# 5. Tokenize datasets
-#    Combine prompt + label into one training sequence.
-# -------------------------------
-def tokenize_function(batch: Dict[str, List[str]]) -> Dict[str, Any]:
     texts = [p + " " + l for p, l in zip(batch["prompt"], batch["label"])]
     return tokenizer(
         texts,
-        max_length=512,
+        max_length=max_length,
         truncation=True,
-        padding=False,  # dynamic padding in collator
+        padding=False,  
     )
 
-print("Tokenizing train...")
-train_tokenized = train_data.map(
-    tokenize_function,
-    batched=True,
-    remove_columns=train_data.column_names,
-)
 
-print("Tokenizing validation...")
-val_tokenized = val_data.map(
-    tokenize_function,
-    batched=True,
-    remove_columns=val_data.column_names,
-)
+def main():
+    # -------------------------------
+    # Checks and seeding
+    # -------------------------------
+    if Config.HF_TOKEN is None:
+        raise ValueError("HUGGINGFACE_HUB_TOKEN is not set in the environment.")
 
-print("Tokenizing test...")
-test_tokenized = test_data.map(
-    tokenize_function,
-    batched=True,
-    remove_columns=test_data.column_names,
-)
+    set_all_seeds(Config.SEED)
 
-print("Example tokenized sample:")
-print({k: v[:10] for k, v in train_tokenized[0].items()})
+    os.makedirs(Config.OUTPUT_DIR, exist_ok=True)
+    os.makedirs(Config.CHECKPOINT_DIR, exist_ok=True)
+    os.makedirs(Config.PLOTS_DIR, exist_ok=True)
 
-# -------------------------------
-# 6. Data collator for causal LM
-#    (creates labels from input_ids internally)
-# -------------------------------
-data_collator = DataCollatorForLanguageModeling(
-    tokenizer=tokenizer,
-    mlm=False,
-)
+    # -------------------------------
+    # Load dataset and split
+    # -------------------------------
+    dataset = load_dataset(Config.DATASET_NAME)
+    full_train = dataset["train"].shuffle(seed=Config.SEED)
 
-# -------------------------------
-# 7. Load model with LoRA 
-# -------------------------------
-print("Loading Llama-3.2-1B model...")
-model = AutoModelForCausalLM.from_pretrained(
-    "meta-llama/Llama-3.2-1B",
-    token=HF_TOKEN,
-    torch_dtype=torch.float16 if torch.cuda.is_available() else torch.float32,
-)
+    train_end = Config.TRAIN_SAMPLES
+    val_end   = train_end + Config.VAL_SAMPLES
+    test_end  = val_end + Config.TEST_SAMPLES
 
-model.config.pad_token_id = tokenizer.pad_token_id
+    train_data = full_train.select(range(0, train_end))
+    val_data   = full_train.select(range(train_end, val_end))
+    test_data  = full_train.select(range(val_end, test_end))
 
-lora_config = LoraConfig(
-    r=8,              # rank (to analyse in report)
-    lora_alpha=16,
-    lora_dropout=0.1,
-    task_type="CAUSAL_LM",
-)
+    print("Train size:", len(train_data))
+    print("Validation size:", len(val_data))
+    print("Test size:", len(test_data))
 
-model = get_peft_model(model, lora_config)
-print("LoRA model ready.")
+    # -------------------------------
+    # Format data: prompt + label
+    # -------------------------------
+    train_data = train_data.map(format_example)
+    val_data   = val_data.map(format_example)
+    test_data  = test_data.map(format_example)
 
-# -------------------------------
-# 8. Training setup
-# -------------------------------
-training_args = TrainingArguments(
-    output_dir="./outputs/checkpoints",
-    per_device_train_batch_size=2,
-    per_device_eval_batch_size=2,
-    learning_rate=2e-4,
-    num_train_epochs=1,  # change to 3 for full run if you want
-    logging_steps=50,
-    seed=SEED,
-)
+    print("Example formatted prompt:")
+    print(train_data[0]["prompt"])
+    print("-----------------------------")
+    print("Label:")
+    print(train_data[0]["label"])
 
-trainer = Trainer(
-    model=model,
-    args=training_args,
-    train_dataset=train_tokenized,
-    eval_dataset=val_tokenized,
-    data_collator=data_collator,
-    tokenizer=tokenizer,
-)
+    # -------------------------------
+    # Load tokenizer
+    # -------------------------------
+    print("Loading tokenizer...")
+    tokenizer = AutoTokenizer.from_pretrained(
+        Config.MODEL_NAME,
+        token=Config.HF_TOKEN,
+    )
+    if tokenizer.pad_token is None:
+        tokenizer.pad_token = tokenizer.eos_token
 
-# -------------------------------
-# 8.1 Train, track time & GPU usage
-# -------------------------------
-start_time = time.time()
-if torch.cuda.is_available():
-    torch.cuda.reset_peak_memory_stats()
+    # -------------------------------
+    # Tokenize datasets
+    # -------------------------------
+    print("Tokenizing train...")
+    train_tokenized = train_data.map(
+        lambda batch: tokenize_function(batch, tokenizer, Config.MAX_LENGTH),
+        batched=True,
+        remove_columns=train_data.column_names,
+    )
 
-print("Starting training...")
-trainer.train()
-end_time = time.time()
-total_time_sec = end_time - start_time
-print(f"Total training time: {total_time_sec:.2f} seconds")
+    print("Tokenizing validation...")
+    val_tokenized = val_data.map(
+        lambda batch: tokenize_function(batch, tokenizer, Config.MAX_LENGTH),
+        batched=True,
+        remove_columns=val_data.column_names,
+    )
 
-if torch.cuda.is_available():
-    peak_mem_bytes = torch.cuda.max_memory_allocated()
-    peak_mem_gb = peak_mem_bytes / (1024 ** 3)
-    print(f"Peak GPU memory usage: {peak_mem_gb:.2f} GB")
+    print("Tokenizing test...")
+    test_tokenized = test_data.map(
+        lambda batch: tokenize_function(batch, tokenizer, Config.MAX_LENGTH),
+        batched=True,
+        remove_columns=test_data.column_names,
+    )
 
-# -------------------------------
-# 8.2 Evaluate on validation set (for reporting)
-# -------------------------------
-eval_metrics = trainer.evaluate(eval_dataset=val_tokenized)
-print("Validation metrics:", eval_metrics)
+    print("Example tokenized sample (first 10 token ids):")
+    print({k: v[:10] for k, v in train_tokenized[0].items()})
 
-if "eval_loss" in eval_metrics:
-    try:
-        ppl = math.exp(eval_metrics["eval_loss"])
-        print(f"Validation perplexity: {ppl:.4f}")
-    except OverflowError:
-        print("Validation perplexity: overflow (loss too large)")
+    # -------------------------------
+    # Data collator 
+    # -------------------------------
+    data_collator = DataCollatorForLanguageModeling(
+        tokenizer=tokenizer,
+        mlm=False,
+    )
 
-# -------------------------------
-# 8.3 Plot training & validation loss
-# -------------------------------
-os.makedirs("./outputs/plots", exist_ok=True)
+    # -------------------------------
+    # Load base model + apply LoRA
+    # -------------------------------
+    print("Loading model:", Config.MODEL_NAME)
+    dtype = torch.float16 if (Config.USE_FP16 and torch.cuda.is_available()) else torch.float32
 
-train_steps: List[int] = []
-train_losses: List[float] = []
-eval_steps: List[int] = []
-eval_losses: List[float] = []
+    base_model = AutoModelForCausalLM.from_pretrained(
+        Config.MODEL_NAME,
+        token=Config.HF_TOKEN,
+        dtype=dtype,
+    )
+    base_model.config.pad_token_id = tokenizer.pad_token_id
 
-for entry in trainer.state.log_history:
-    # Training loss entries
-    if "loss" in entry:
-        step = entry.get("step", len(train_steps))
-        train_steps.append(step)
-        train_losses.append(entry["loss"])
+    lora_config = LoraConfig(
+        r=Config.LORA_R,
+        lora_alpha=Config.LORA_ALPHA,
+        lora_dropout=Config.LORA_DROPOUT,
+        task_type=Config.LORA_TASK_TYPE,
+    )
+    model = get_peft_model(base_model, lora_config)
+    print("LoRA model ready.")
 
-    # Evaluation loss entries (from evaluate())
-    if "eval_loss" in entry:
-        if "step" in entry:
-            step = entry["step"]
-        elif train_steps:
-            # If no step logged, place eval at last training step
-            step = train_steps[-1]
-        else:
-            step = len(eval_steps)
-        eval_steps.append(step)
-        eval_losses.append(entry["eval_loss"])
+    # -------------------------------
+    # TrainingArguments
+    # -------------------------------
+    training_args = TrainingArguments(
+        output_dir=Config.CHECKPOINT_DIR,
+        per_device_train_batch_size=Config.PER_DEVICE_TRAIN_BATCH_SIZE,
+        per_device_eval_batch_size=Config.PER_DEVICE_EVAL_BATCH_SIZE,
+        learning_rate=Config.LEARNING_RATE,
+        gradient_accumulation_steps=Config.GRADIENT_ACCUMULATION_STEPS,
+        warmup_steps=Config.WARMUP_STEPS,
+        num_train_epochs=Config.NUM_EPOCHS,
+        logging_steps=Config.LOGGING_STEPS,
+        eval_strategy="steps",
+        eval_steps=Config.EVAL_STEPS,
+        save_strategy="steps",
+        save_steps=Config.SAVE_STEPS,
+        save_total_limit=Config.SAVE_TOTAL_LIMIT,
+        seed=Config.SEED,
+        fp16=True if (Config.USE_FP16 and torch.cuda.is_available()) else False,
+        load_best_model_at_end=True,
+        metric_for_best_model="eval_loss",
+        greater_is_better=False,
+        report_to="none",  
+    )
 
-plt.figure()
-if train_losses:
-    plt.plot(train_steps, train_losses, label="train_loss")
-if eval_losses:
-    # marker + dashed line so it's clearly visible
-    plt.plot(eval_steps, eval_losses, marker="o", linestyle="--", label="eval_loss")
+    # -------------------------------
+    # Trainer
+    # -------------------------------
+    trainer = Trainer(
+        model=model,
+        args=training_args,
+        train_dataset=train_tokenized,
+        eval_dataset=val_tokenized,
+        data_collator=data_collator,
+        processing_class=tokenizer,       
+    )
 
-plt.xlabel("Step")
-plt.ylabel("Loss")
-plt.title("Training and Validation Loss")
-plt.legend()
-plt.grid(True)
+    # -------------------------------
+    # Train, time, and GPU usage
+    # -------------------------------
+    start_time = time.time()
+    if torch.cuda.is_available():
+        torch.cuda.reset_peak_memory_stats()
 
-plot_path = "./outputs/plots/loss_curves.png"
-plt.savefig(plot_path, bbox_inches="tight")
-plt.close()
-print(f"Saved loss curves to {plot_path}")
+    print("Starting training...")
+    trainer.train()
+    end_time = time.time()
 
-# -------------------------------
-# 9. Save final model checkpoint
-# -------------------------------
-os.makedirs("./outputs", exist_ok=True)
-trainer.save_model("./outputs/best_model.pt")
-tokenizer.save_pretrained("./outputs/checkpoints")
-print("Training finished and model saved to ./outputs/best_model.pt")
+    total_time_sec = end_time - start_time
+    print(f"Total training time: {total_time_sec:.2f} seconds")
+
+    if torch.cuda.is_available():
+        peak_mem_bytes = torch.cuda.max_memory_allocated()
+        peak_mem_gb = peak_mem_bytes / (1024 ** 3)
+        print(f"Peak GPU memory usage: {peak_mem_gb:.2f} GB")
+
+    # -------------------------------
+    # Evaluate on validation set
+    # -------------------------------
+    eval_metrics = trainer.evaluate(eval_dataset=val_tokenized)
+    print("Validation metrics:", eval_metrics)
+
+    if "eval_loss" in eval_metrics:
+        try:
+            ppl = math.exp(eval_metrics["eval_loss"])
+            print(f"Validation perplexity: {ppl:.4f}")
+        except OverflowError:
+            print("Validation perplexity: overflow (loss too large)")
+
+    # -------------------------------
+    # 11. Plot training & validation loss
+    # -------------------------------
+    train_steps = []
+    train_losses = []
+    eval_steps = []
+    eval_losses = []
+
+    for entry in trainer.state.log_history:
+        if "loss" in entry and "step" in entry:
+            train_steps.append(entry["step"])
+            train_losses.append(entry["loss"])
+        if "eval_loss" in entry and "step" in entry:
+            eval_steps.append(entry["step"])
+            eval_losses.append(entry["eval_loss"])
+
+    plt.figure()
+    if train_losses:
+        plt.plot(train_steps, train_losses, label="train_loss")
+    if eval_losses:
+        plt.plot(eval_steps, eval_losses, label="eval_loss")
+
+    plt.xlabel("Step")
+    plt.ylabel("Loss")
+    plt.title("Training and Validation Loss")
+    plt.legend()
+    plt.grid(True)
+
+    plot_path = os.path.join(Config.PLOTS_DIR, "loss_curves.png")
+    plt.savefig(plot_path, bbox_inches="tight")
+    plt.close()
+    print(f"Saved loss curves to {plot_path}")
+
+    # -------------------------------
+    # Save final (best) model + tokenizer
+    # -------------------------------
+    trainer.save_model(Config.BEST_MODEL_DIR)
+    tokenizer.save_pretrained(Config.CHECKPOINT_DIR)
+    print(f"Training finished. Best model saved to {Config.BEST_MODEL_DIR}")
+
+
+if __name__ == "__main__":
+    main()
