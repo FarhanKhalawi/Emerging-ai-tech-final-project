@@ -1,0 +1,235 @@
+{
+  "config": {
+    "seed": 42,
+    "base_model": "meta-llama/Llama-3.2-1B",
+    "adapter_path": "./outputs/best_model.pt"
+  },
+  "metrics": {
+    "base": {
+      "perplexity": 4.194618882882324,
+      "eval_metrics": {
+        "eval_loss": 1.4338024854660034,
+        "eval_model_preparation_time": 0.0037,
+        "eval_runtime": 31.3898,
+        "eval_samples_per_second": 63.715,
+        "eval_steps_per_second": 15.929
+      },
+      "avg_f1": 0.20540367117531297,
+      "std_f1": 0.07557502455488008
+    },
+    "fine_tuned": {
+      "perplexity": 4.194618882882324,
+      "eval_metrics": {
+        "eval_loss": 1.4338024854660034,
+        "eval_model_preparation_time": 0.0036,
+        "eval_runtime": 31.9695,
+        "eval_samples_per_second": 62.56,
+        "eval_steps_per_second": 15.64
+      },
+      "avg_f1": 0.20540367117531297,
+      "std_f1": 0.07557502455488008
+    }
+  },
+  "examples": [
+    {
+      "index": 0,
+      "instruction": "Given a list of nouns, generate a new sentence with one of the nouns as the subject and one of the nouns as the object.",
+      "input": "List: [Chef, Kangaroo, Fridge, Table]",
+      "reference_output": "The Chef put the leftovers in the Fridge to keep them fresh for her next meal.",
+      "outputs": {
+        "base": {
+          "model": "meta-llama/Llama-3.2-1B",
+          "strategy": "greedy",
+          "text": "Chef is cooking a delicious meal for his family. The table is set with a fresh salad and a glass of wine. The kangaroo is hopping around in the backyard, enjoying the warm sunshine. The fridge is full of delicious food, waiting to be eaten. The table is ready for the meal. The chef is preparing the meal, using his skills and knowledge to create a delicious meal. The meal is served, and everyone is enjoying it. The table is cleared, and the meal is over. The chef is cleaning up, putting away the dishes and utensils. The kangaroo is hopping around, enjoying the warm sunshine. The fridge",
+          "f1": 0.14516129032258063
+        },
+        "fine_tuned": {
+          "model": "meta-llama/Llama-3.2-1B-lora",
+          "strategy": "greedy",
+          "text": "Chef is cooking a delicious meal for his family. The table is set with a fresh salad and a glass of wine. The kangaroo is hopping around in the backyard, enjoying the warm sunshine. The fridge is full of delicious food, waiting to be eaten. The table is ready for the meal. The chef is preparing the meal, using his skills and knowledge to create a delicious meal. The meal is served, and everyone is enjoying it. The table is cleared, and the meal is over. The chef is cleaning up, putting away the dishes and utensils. The kangaroo is hopping around, enjoying the warm sunshine. The fridge",
+          "f1": 0.14516129032258063
+        }
+      }
+    },
+    {
+      "index": 1,
+      "instruction": "Generate a computer science project based on Python language.",
+      "input": "",
+      "reference_output": "Title: Student Management System\n\nObjective: The main aim of the project is to develop a Python-based student management system that can store, retrieve, and manipulate the data of students in schools and colleges.\n\nOverview: The student management system is a program that allows users to enter, update, delete, and search for student data in an easy and efficient manner. This program will use a graphical user interface (GUI) to facilitate interaction with the user.\n\nTools and Technology: Python 3.X, SQLite Database, Tkinter GUI library.\n\nFeatures:\n- User-friendly GUI\n- Add, update, delete and view student records\n- Data is saved in SQLite Database\n- Report generation in PDF format\n- Search feature for efficient data retrieval\n\nMethodology:\n\n1. Design the main window using Tkinter GUI library which contains buttons like ADD, UPDATE, VIEW, DELETE, SEARCH and EXIT.\n\n2. Create a database using SQLite and design a table named 'students' with columns like student ID, name, email, phone, address, and courses.\n\n3. Define functions for each button, such as:\n- ADD: This function will prompt the user to input details such as student ID, name, email, phone, address, and courses, and then add the details to the 'students' table in the database.\n- UPDATE: This function will allow the user to update student information in the database.\n- VIEW: This function will display the student data in a tabular form.\n- DELETE: This function will enable the user to delete a particular student record from the database.\n- SEARCH: This function will provide an efficient way to search for student data based on a particular field such as ID or name.\n- EXIT: This function will terminate the program.\n\n4. Develop a feature that generates reports in PDF format, including all student data or specific search results.\n\n5. Test the program to ensure it is functional and debug any errors that may arise.\n\nConclusion:\n\nBy developing this Student Management System, institutions can improve their student data management and enhance their operations' efficiency. The program is user-friendly, and the graphical user interface makes it easy for users to interact with the system. The use of the SQLite database ensures that data is stored safely and can be retrieved easily. Overall, this project is an excellent tool for schools and colleges to manage their student data effectively.",
+      "outputs": {
+        "base": {
+          "model": "meta-llama/Llama-3.2-1B",
+          "strategy": "greedy",
+          "text": "Here is a project idea in Python language:\n\nProject Name: \"A Virtual Assistant for Home Automation\"\n\nObjective: The project aims to create a virtual assistant that can help users automate their home automation tasks using Python programming language.\n\nFeatures:\n- User-friendly interface for easy navigation\n- Ability to control multiple devices using a single command\n- Integration with popular home automation platforms such as Alexa, Google Home, and IFTTT\n- Customizable voice commands\n- Ability to schedule tasks and reminders\n- Integration with weather and news services\n- Ability to control lighting, temperature, and other home automation devices\n\nBenefits:\n- Saves time and effort by",
+          "f1": 0.17586912065439675
+        },
+        "fine_tuned": {
+          "model": "meta-llama/Llama-3.2-1B-lora",
+          "strategy": "greedy",
+          "text": "Here is a project idea in Python language:\n\nProject Name: \"A Virtual Assistant for Home Automation\"\n\nObjective: The project aims to create a virtual assistant that can help users automate their home automation tasks using Python programming language.\n\nFeatures:\n- User-friendly interface for easy navigation\n- Ability to control multiple devices using a single command\n- Integration with popular home automation platforms such as Alexa, Google Home, and IFTTT\n- Customizable voice commands\n- Ability to schedule tasks and reminders\n- Integration with weather and news services\n- Ability to control lighting, temperature, and other home automation devices\n\nBenefits:\n- Saves time and effort by",
+          "f1": 0.17586912065439675
+        }
+      }
+    },
+    {
+      "index": 2,
+      "instruction": "Write a script for a play about two friends.",
+      "input": "Friends: Kate & Mia\nLocation: Mia's apartment",
+      "reference_output": "(Setting: The living room of Mia's apartment. Kate is sitting on the couch, scrolling through her phone while Mia is in the kitchen, making coffee.)\n\nKate: (shouts) Hey Mia, do you have any plans for the weekend?\n\nMia: (shouts from the kitchen) Not really, just the usual errands and maybe some Netflix. Why do you ask?\n\nKate: (puts down her phone) I was thinking we could do something fun, maybe go to the beach or have a picnic in the park!\n\nMia: (enters, holding two mugs of coffee) That sounds like a great idea, Kate! I could use a break from my boring routine.\n\n(Kate takes one of the mugs from Mia and takes a sip)\n\nKate: (smiling) Perfect! But if we're going to the beach, we'll need to go shopping for some cute swimsuits!\n\nMia: (sits next to Kate) Oh, I love shopping, count me in! But first, we need to make a list of all the things we'll need. Sunscreen, towels, snacks...\n\nKate: (interrupts) And a beach umbrella, I don’t want to get sunburnt!\n\nMia: (laughs) Good thinking, Kate, always looking out for me!\n\nKate: (smirks) That’s what friends are for! \n\nMia: (leaning her head on Kate's shoulder) I don’t know what I would do without you.\n\nKate: (puts her arm around Mia) Same here, Mia. We’re going to have the best time at the beach!\n\n(Both girls smile at each other, sipping their coffee, excited about their upcoming beach adventure.)\n\nTHE END",
+      "outputs": {
+        "base": {
+          "model": "meta-llama/Llama-3.2-1B",
+          "strategy": "greedy",
+          "text": "Script for a play about two friends, Kate and Mia.\n\nKate: Hi Mia, how are you?\n\nMia: I'm good, thanks Kate. How are you?\n\nKate: I'm doing well, how about you?\n\nMia: I'm doing great, thanks Kate.\n\nKate: So, what's new with you?\n\nMia: Not much, just been busy with work and school.\n\nKate: Oh, I see. What about you?\n\nMia: I've been working on a project for my internship, it's going well.\n\nKate: That's great Mia, I'm sure it's going to be a success",
+          "f1": 0.19393939393939397
+        },
+        "fine_tuned": {
+          "model": "meta-llama/Llama-3.2-1B-lora",
+          "strategy": "greedy",
+          "text": "Script for a play about two friends, Kate and Mia.\n\nKate: Hi Mia, how are you?\n\nMia: I'm good, thanks Kate. How are you?\n\nKate: I'm doing well, how about you?\n\nMia: I'm doing great, thanks Kate.\n\nKate: So, what's new with you?\n\nMia: Not much, just been busy with work and school.\n\nKate: Oh, I see. What about you?\n\nMia: I've been working on a project for my internship, it's going well.\n\nKate: That's great Mia, I'm sure it's going to be a success",
+          "f1": 0.19393939393939397
+        }
+      }
+    },
+    {
+      "index": 3,
+      "instruction": "Create a prompt that can be used to generate a story.",
+      "input": "",
+      "reference_output": "Once upon a time, in a far off land, there lived a young boy named Jack. Jack lived a simple life with his mother in a small cottage at the edge of the forest. Despite their hardships, Jack and his mother were happy, always finding joy in the little things. But one day, Jack's adventurous spirit led him on a journey that would change his life forever. What happened when Jack ventured into the forest, and what secrets did he uncover? The story unfolds as Jack faces challenges, meets new friends, and discovers the true meaning of courage and kindness.",
+      "outputs": {
+        "base": {
+          "model": "meta-llama/Llama-3.2-1B",
+          "strategy": "greedy",
+          "text": "Story Prompt: \n\nA young girl named Alice is lost in a magical world where she must find her way back home. She embarks on a journey through a series of enchanted forests, encountering strange creatures and magical creatures along the way. Alice must use her wits and courage to overcome obstacles and find her way back to her home. \n\nAlice's journey is filled with adventure, danger, and unexpected twists and turns. She must use her imagination and her ability to think outside the box to overcome the challenges she faces. Along the way, she learns about the world around her and the importance of being brave and resilient. \n\nIn the end",
+          "f1": 0.1990521327014218
+        },
+        "fine_tuned": {
+          "model": "meta-llama/Llama-3.2-1B-lora",
+          "strategy": "greedy",
+          "text": "Story Prompt: \n\nA young girl named Alice is lost in a magical world where she must find her way back home. She embarks on a journey through a series of enchanted forests, encountering strange creatures and magical creatures along the way. Alice must use her wits and courage to overcome obstacles and find her way back to her home. \n\nAlice's journey is filled with adventure, danger, and unexpected twists and turns. She must use her imagination and her ability to think outside the box to overcome the challenges she faces. Along the way, she learns about the world around her and the importance of being brave and resilient. \n\nIn the end",
+          "f1": 0.1990521327014218
+        }
+      }
+    },
+    {
+      "index": 4,
+      "instruction": "What type of cheddar cheese is best for a cheese platter?",
+      "input": "",
+      "reference_output": "When constructing a cheese platter, it's important to consider a balance of flavors and textures to provide variety to your guests. In the case of cheddar cheese, which is a popular choice, there are several options to consider. \n\nAged cheddar is a great option to include on a cheese platter because of its distinct, sharp flavor. This type of cheddar is aged for a longer period of time, typically 1-2 years, which results in a richer, more complex flavor. It has a crumbly texture that goes well with crackers, fruit or nuts.\n\nAnother popular choice is white cheddar, which is typically made from cow's milk or goat's milk, and has a creamy, smooth texture. This type of cheddar is milder in flavor, making it a great option for guests who prefer a less intense cheese.\n\nUltimately, the best type of cheddar cheese for a cheese platter is one that balances well with the other cheeses and accompaniments on the platter. Experiment with different options to find a combination that works for your taste preferences.",
+      "outputs": {
+        "base": {
+          "model": "meta-llama/Llama-3.2-1B",
+          "strategy": "greedy",
+          "text": "The type of cheddar cheese that is best for a cheese platter depends on personal preference and the type of platter being used. Some popular options include:\n- Sharp Cheddar: This type of cheese is known for its sharp, tangy flavor and is often used in platters as it can stand up to the other flavors on the platter.\n- Mild Cheddar: This type of cheese is milder in flavor and is often used in platters as it can complement other flavors on the platter.\n- White Cheddar: This type of cheese is known for its creamy texture and mild flavor and is often used in platters",
+          "f1": 0.3629893238434163
+        },
+        "fine_tuned": {
+          "model": "meta-llama/Llama-3.2-1B-lora",
+          "strategy": "greedy",
+          "text": "The type of cheddar cheese that is best for a cheese platter depends on personal preference and the type of platter being used. Some popular options include:\n- Sharp Cheddar: This type of cheese is known for its sharp, tangy flavor and is often used in platters as it can stand up to the other flavors on the platter.\n- Mild Cheddar: This type of cheese is milder in flavor and is often used in platters as it can complement other flavors on the platter.\n- White Cheddar: This type of cheese is known for its creamy texture and mild flavor and is often used in platters",
+          "f1": 0.3629893238434163
+        }
+      }
+    },
+    {
+      "index": 5,
+      "instruction": "Classify each sentence as formal or informal.",
+      "input": "\"Hey dude, how's it going?\"\n\"Good morning, how can I help you?\"",
+      "reference_output": "The first sentence, \"Hey dude, how's it going?\", is informal.\nThe second sentence, \"Good morning, how can I help you?\" is formal.",
+      "outputs": {
+        "base": {
+          "model": "meta-llama/Llama-3.2-1B",
+          "strategy": "greedy",
+          "text": "Formal: \"Hey dude, how's it going?\" (Informal: \"Good morning, how can I help you?\"). \n\nInformal: \"Good morning, how can I help you?\" (Formal: \"Hey dude, how's it going?\"). \n\nResponse: Formal: \"Hey dude, how's it going?\" (Informal: \"Good morning, how can I help you?\"). \n\nInformal: \"Good morning, how can I help you?\" (Formal: \"Hey dude, how's it going?\"). \n\nResponse: Formal: \"Hey dude, how's it going?\" (Informal",
+          "f1": 0.2528735632183908
+        },
+        "fine_tuned": {
+          "model": "meta-llama/Llama-3.2-1B-lora",
+          "strategy": "greedy",
+          "text": "Formal: \"Hey dude, how's it going?\" (Informal: \"Good morning, how can I help you?\"). \n\nInformal: \"Good morning, how can I help you?\" (Formal: \"Hey dude, how's it going?\"). \n\nResponse: Formal: \"Hey dude, how's it going?\" (Informal: \"Good morning, how can I help you?\"). \n\nInformal: \"Good morning, how can I help you?\" (Formal: \"Hey dude, how's it going?\"). \n\nResponse: Formal: \"Hey dude, how's it going?\" (Informal",
+          "f1": 0.2528735632183908
+        }
+      }
+    },
+    {
+      "index": 6,
+      "instruction": "Generate a list of tips to teach someone how to play chess.",
+      "input": "",
+      "reference_output": "1. Start by learning the board: Chess is played on a square board divided into 64 squares of alternating colors. Each player starts with 16 pieces arranged on opposite sides of the board.\n\n2. Know the pieces and their moves: Each piece has its own unique way of moving. The King can move in any direction, but only one square at a time. The Queen can move any number of squares along a rank, file, or diagonal. Rooks move horizontally or vertically, Bishops move diagonally, Knights move in an L-shape, and Pawns move forward but capture diagonally.\n\n3. Understand the objective of the game: The ultimate goal of chess is to checkmate your opponent's King, which means it's in a position to be captured and there is no way to move it out of capture.\n\n4. Learn the special moves: In addition to the regular moves, there are a few special moves. 'En passant' and 'castling' are two moves that can be useful in certain situations.\n\n5. Develop a strategy: Chess is not just a game of moving pieces, but also a game of strategy. You'll want to control the center of the board, protect your King, and put pressure on your opponent's pieces.\n\n6. Practice tactics: Chess tactics are moves that take advantage of the position of your opponent's pieces. Some common tactics include pins, forks, and discovered attacks.\n\n7. Keep an eye on the clock: In a timed game, each player has a set amount of time to make all of their moves. This adds an extra element of strategy to the game, as players must balance the time they take to think with the need to make moves before time runs out.\n\n8. Study endgame scenarios: The endgame is when there are only a few pieces left on the board. It's important to know how to maneuver your pieces to achieve checkmate, even with only a few pieces left.\n\n9. Analyze your games: One of the best ways to improve at chess is to analyze your games after you've played them. Try to figure out what you did right, what you did wrong, and how you could have played better.\n\n10. Play lots of games: Finally, the best way to learn chess is by playing it! Try to play as often as you can, against opponents of different skill levels. You'll improve quickly and have fun at the same time.",
+      "outputs": {
+        "base": {
+          "model": "meta-llama/Llama-3.2-1B",
+          "strategy": "greedy",
+          "text": "1. Learn the rules of chess: Before you can play chess, you need to know the rules of the game. This includes the rules of the board, the pieces, and the moves.\n\n2. Understand the pieces: Each piece has a unique role in the game. The king is the most important piece, as it controls the rest of the board. The queen is the most powerful piece, as it can move any number of squares in any direction. The rook is the most versatile piece, as it can move any number of squares in any direction, but it can also capture other pieces.\n\n3. Understand the board:",
+          "f1": 0.28627450980392155
+        },
+        "fine_tuned": {
+          "model": "meta-llama/Llama-3.2-1B-lora",
+          "strategy": "greedy",
+          "text": "1. Learn the rules of chess: Before you can play chess, you need to know the rules of the game. This includes the rules of the board, the pieces, and the moves.\n\n2. Understand the pieces: Each piece has a unique role in the game. The king is the most important piece, as it controls the rest of the board. The queen is the most powerful piece, as it can move any number of squares in any direction. The rook is the most versatile piece, as it can move any number of squares in any direction, but it can also capture other pieces.\n\n3. Understand the board:",
+          "f1": 0.28627450980392155
+        }
+      }
+    },
+    {
+      "index": 7,
+      "instruction": "Identify the incorrect definition.",
+      "input": "Fungi: \nA) A type of plant\nB) A type of bacteria\nC) A type of single-celled organism\nD) A type of organism that obtains its food from dead organic matter",
+      "reference_output": "A) Fungi is often mistakenly thought of as a plant but it is not. Fungi and plants are two separate groups of living things.",
+      "outputs": {
+        "base": {
+          "model": "meta-llama/Llama-3.2-1B",
+          "strategy": "greedy",
+          "text": "D. A type of organism that obtains its food from dead organic matter. Fungi are a type of organism that is a type of single-celled organism. They are also a type of bacteria. Fungi are a type of plant. They are a type of bacteria. They are a type of single-celled organism. They are a type of plant. They are a type of bacteria. They are a type of single-celled organism. They are a type of plant. They are a type of bacteria. They are a type of single-celled organism. They are a type of plant. They are a type of bacteria. They",
+          "f1": 0.11023622047244093
+        },
+        "fine_tuned": {
+          "model": "meta-llama/Llama-3.2-1B-lora",
+          "strategy": "greedy",
+          "text": "D. A type of organism that obtains its food from dead organic matter. Fungi are a type of organism that is a type of single-celled organism. They are also a type of bacteria. Fungi are a type of plant. They are a type of bacteria. They are a type of single-celled organism. They are a type of plant. They are a type of bacteria. They are a type of single-celled organism. They are a type of plant. They are a type of bacteria. They are a type of single-celled organism. They are a type of plant. They are a type of bacteria. They",
+          "f1": 0.11023622047244093
+        }
+      }
+    },
+    {
+      "index": 8,
+      "instruction": "Write a creative metaphor for fear.",
+      "input": "",
+      "reference_output": "Fear is a thief, sneaking in through the shadows of your mind, silently stealing your courage and confidence, leaving you feeling vulnerable and exposed.",
+      "outputs": {
+        "base": {
+          "model": "meta-llama/Llama-3.2-1B",
+          "strategy": "greedy",
+          "text": "Fear is like a wild animal, always lurking in the shadows, ready to pounce at any moment. It is a powerful emotion that can paralyze us, causing us to freeze in fear, unable to move or think clearly. But like any wild animal, fear can also be tamed, controlled, and harnessed for our own good. In the same way, fear can be used as a tool to help us navigate our fears, to help us overcome them, and to help us grow and thrive. It is a powerful emotion, but it is also a tool that can be used to our advantage. So, let fear be",
+          "f1": 0.10769230769230771
+        },
+        "fine_tuned": {
+          "model": "meta-llama/Llama-3.2-1B-lora",
+          "strategy": "greedy",
+          "text": "Fear is like a wild animal, always lurking in the shadows, ready to pounce at any moment. It is a powerful emotion that can paralyze us, causing us to freeze in fear, unable to move or think clearly. But like any wild animal, fear can also be tamed, controlled, and harnessed for our own good. In the same way, fear can be used as a tool to help us navigate our fears, to help us overcome them, and to help us grow and thrive. It is a powerful emotion, but it is also a tool that can be used to our advantage. So, let fear be",
+          "f1": 0.10769230769230771
+        }
+      }
+    },
+    {
+      "index": 9,
+      "instruction": "Given a list of sports and equipment required, develop a new game or sport.",
+      "input": "Sports: Football, Basketball, Tennis \nEquipment: two nets, one ball",
+      "reference_output": "Based on the given sports and equipment, the new game can be called \"Net Ball Challenge.\"\n\nDescription:\nThe game is designed for 4-10 players and is played on a rectangular court, which is divided into two halves by a centerline. At each end of the court, a net is placed, similar to the ones used in tennis. The nets are used to score goals by throwing the ball over the net into the opponent's half of the court. The ball should be similar in size and weight to a basketball.\n\nObjective:\nThe objective of the game is to score as many goals as possible while preventing the opposing team from scoring.\n\nGameplay:\nThe game starts with a coin toss to determine which team will start with the ball. Each team must have an equal number of players. The team with the ball tries to score by throwing the ball over the net into the other team's half of the court. The opposing team must try to catch the ball and throw it back over the net to score. \n\nIf the ball hits the ground, the team that failed to catch the ball loses possession, and the other team gets the chance to throw the ball. If a player steps on or over the centerline while in possession of the ball, it results in a turnover. The game can be played in a timed format or the first team to reach a specific number of goals wins.\n\nNet Ball Challenge combines the fast-paced action of basketball and football with the precision and technique of tennis. It's a fun and exciting game that will provide hours of entertainment for players of all skill levels.",
+      "outputs": {
+        "base": {
+          "model": "meta-llama/Llama-3.2-1B",
+          "strategy": "greedy",
+          "text": "I'm sorry, but I don't have the necessary information to develop a new game or sport. Can you provide me with more details about the sports and equipment required? \n\nThank you for your response. I'm a computer program, and I'm not able to provide you with a new game or sport. However, I can help you with the development of a new game or sport by providing you with the necessary information. \n\nPlease provide me with the following information:\n\n- The sports that are currently played\n- The equipment that is currently used\n- The rules of the game or sport\n\nOnce I have this information, I can develop",
+          "f1": 0.21994884910485932
+        },
+        "fine_tuned": {
+          "model": "meta-llama/Llama-3.2-1B-lora",
+          "strategy": "greedy",
+          "text": "I'm sorry, but I don't have the necessary information to develop a new game or sport. Can you provide me with more details about the sports and equipment required? \n\nThank you for your response. I'm a computer program, and I'm not able to provide you with a new game or sport. However, I can help you with the development of a new game or sport by providing you with the necessary information. \n\nPlease provide me with the following information:\n\n- The sports that are currently played\n- The equipment that is currently used\n- The rules of the game or sport\n\nOnce I have this information, I can develop",
+          "f1": 0.21994884910485932
+        }
+      }
+    }
+  ]
+}

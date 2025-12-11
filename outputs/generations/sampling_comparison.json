@@ -1,0 +1,224 @@
+{
+  "config": {
+    "seed": 42,
+    "base_model": "meta-llama/Llama-3.2-1B",
+    "adapter_path": "./outputs/best_model.pt",
+    "strategies": [
+      "greedy",
+      "temperature_0.7",
+      "top_p_0.9"
+    ]
+  },
+  "examples": [
+    {
+      "index": 0,
+      "instruction": "Instruction: Explain why the sky is blue.\nResponse:",
+      "outputs": [
+        {
+          "model": "meta-llama/Llama-3.2-1B-lora",
+          "strategy": "greedy",
+          "text": "The color blue is associated with the sky, and the sky is the largest and most important source of light in the universe. The blue color of the sky is caused by the scattering of light by tiny particles in the atmosphere, known as aerosols. These particles are suspended in the atmosphere and scatter light in all directions, creating a blue color. The blue color of the sky is also influenced by the presence of water vapor in the atmosphere, which absorbs certain wavelengths of light and reflects others, creating a blue color. Additionally, the blue color of the sky is also influenced by the presence of clouds, which reflect light back into space, creating"
+        },
+        {
+          "model": "meta-llama/Llama-3.2-1B-lora",
+          "strategy": "temperature_0.7",
+          "text": "The color blue is associated with the sky because of its deep, rich, and calm nature. The color blue is often used to represent calmness, serenity, and peace, which are all feelings associated with the sky. Additionally, there is a long-standing belief that the sky is blue because of the way light is reflected off the surface of the earth. When light passes through the atmosphere, it can be scattered and refracted in different directions, resulting in a color that appears similar to the color of the sky. The sky is a vast and empty place, reflecting light in all directions, and this creates a more uniform and consistent color"
+        },
+        {
+          "model": "meta-llama/Llama-3.2-1B-lora",
+          "strategy": "top_p_0.9",
+          "text": "The color blue in the sky is a result of refraction and reflection of light by ice crystals and clouds in the atmosphere. \n\nWhen sunlight strikes an ice crystal, it bounces off at an angle and appears to be reflected from the sky. The light is then scattered and dispersed by small particles in the atmosphere, such as droplets of water in clouds, producing the blue color.\n\nAnother explanation for the color blue is that it is caused by the dispersion of blue light by water vapor in the atmosphere. The atmosphere contains many small droplets of water that scatter and disperse light, creating a blue color. This is why the sky appears"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "instruction": "Instruction: Give three tips for studying more effectively.\nResponse:",
+      "outputs": [
+        {
+          "model": "meta-llama/Llama-3.2-1B-lora",
+          "strategy": "greedy",
+          "text": "1. Set clear goals and objectives: Before you start studying, it's important to have a clear understanding of what you want to achieve. This will help you stay focused and motivated throughout your study session.\n\n2. Use effective study techniques: There are many effective study techniques that can help you study more effectively. Some of these include using flashcards, outlining key points, and taking regular breaks to refresh your memory.\n\n3. Take advantage of study aids: There are many study aids available, such as flashcards, mnemonics, and note-taking apps, that can help you study more effectively. Make sure to use these tools to"
+        },
+        {
+          "model": "meta-llama/Llama-3.2-1B-lora",
+          "strategy": "temperature_0.7",
+          "text": "1. Set specific, achievable goals: Break down your long-term study goals into smaller, manageable tasks that can be accomplished every day. This will help keep you motivated and focused throughout the day.\n\n2. Use study techniques: There are many different study techniques that can be used, such as visualization, mnemonics, and note-taking. Find the ones that work best for you and incorporate them into your study schedule.\n\n3. Stay motivated: The most effective study techniques can only help you if you stay motivated and determined to achieve your goals. Make a habit out of setting aside time for study, and remind yourself of the benefits of"
+        },
+        {
+          "model": "meta-llama/Llama-3.2-1B-lora",
+          "strategy": "top_p_0.9",
+          "text": "1. Organize Your Studying Environment: Create a dedicated study space, free of distractions, to study in. This could be a study room at home or a library, a café or restaurant, or even a comfortable spot in your office. Arrange your workspace in a way that allows you to be able to focus on your studies. Keep your study materials in order, and have everything you need within reach.\n\n2. Take Breaks and Stay Motivated: Set aside specific times for studying, and avoid working or studying when you are not in the mood to focus. Taking breaks and engaging in activities that you enjoy can help to keep"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "instruction": "Instruction: Describe a healthy breakfast for a busy student.\nResponse:",
+      "outputs": [
+        {
+          "model": "meta-llama/Llama-3.2-1B-lora",
+          "strategy": "greedy",
+          "text": "A healthy breakfast for a busy student can include a variety of whole grains, fruits, and vegetables. Here are some ideas:\n\n1. Whole grain toast with low-fat cheese and sliced fruits like berries, bananas, or apples.\n\n2. Oatmeal with fresh fruit, nuts, and a sprinkle of cinnamon.\n\n3. Scrambled eggs with vegetables like mushrooms, onions, and peppers.\n\n4. Whole grain pancakes with fresh fruit and a drizzle of maple syrup.\n\n5. Breakfast burrito with scrambled eggs, salsa, and cheese.\n\n6. Whole grain waffles with fresh fruit and a drizzle of honey.\n\n7. Oat"
+        },
+        {
+          "model": "meta-llama/Llama-3.2-1B-lora",
+          "strategy": "temperature_0.7",
+          "text": "A healthy breakfast for a busy student could include a variety of whole grain toast, topped with sliced fruit such as strawberries, blueberries, or bananas. A simple scrambled egg or a fried egg with a side of vegetables such as bell peppers, onions, and spinach can also be a great option. A smoothie made with skim milk, fresh fruit, yogurt, and fresh greens can provide a filling and nutrient-packed start to the day. For a sweet and savory combination, try adding a slice of Canadian bacon or sausage, avocado, and a hard-boiled egg. A bowl of oatmeal with fruit and a pinch of cinnamon can be a"
+        },
+        {
+          "model": "meta-llama/Llama-3.2-1B-lora",
+          "strategy": "top_p_0.9",
+          "text": "A healthy breakfast for a busy student might consist of several simple and easy-to-prepare components, such as the following:\n\n1. Whole Grain Toast with Nut Butter: This can be made ahead of time and stored in a plastic container to make the preparation process quicker. You can pair it with fresh fruit, like sliced strawberries, and a sprinkle of flaked almonds for added nutrition.\n\n2. Oats with Fruit: Oats are a great option for a balanced breakfast as they are high in fiber, protein, and healthy fats. You can mix them with any fresh fruit, such as sliced bananas, and a sprinkle of cinnamon for added flavor"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "instruction": "Instruction: Summarize the main causes of climate change.\nResponse:",
+      "outputs": [
+        {
+          "model": "meta-llama/Llama-3.2-1B-lora",
+          "strategy": "greedy",
+          "text": "Climate change is caused by a number of factors, including the burning of fossil fuels, deforestation, and the release of greenhouse gases into the atmosphere. These factors contribute to the increase in the Earth's temperature, which can lead to changes in weather patterns, rising sea levels, and other environmental impacts. The main causes of climate change are human activities, such as the burning of fossil fuels and the release of greenhouse gases, which trap heat in the atmosphere, causing it to warm. Other factors include changes in the Earth's orbit, volcanic activity, and the natural cycle of the sun. The effects of climate change can be seen in the rise"
+        },
+        {
+          "model": "meta-llama/Llama-3.2-1B-lora",
+          "strategy": "temperature_0.7",
+          "text": "Climate change refers to a significant and continuous warming of the Earth’s atmosphere, oceans, and other higher levels of the Earth system. This warming is caused by a variety of factors, including the greenhouse effect, the burning of fossil fuels, the uptake of carbon dioxide and other greenhouse gases, and the interaction of these gases with the radiation from the sun.\n\nSome of the main causes of climate change are: \n\n- Greenhouse effect: The greenhouse effect is the natural process by which certain gases in the atmosphere, such as carbon dioxide, methane, and nitrous oxide, trap heat emitted by the Earth's surface. This trapped heat increases the temperature"
+        },
+        {
+          "model": "meta-llama/Llama-3.2-1B-lora",
+          "strategy": "top_p_0.9",
+          "text": "Climate change is caused by various factors such as greenhouse gas emissions, deforestation, and human activities. These factors include burning fossil fuels and destroying natural ecosystems, which trap heat in the atmosphere. Climate change also occurs due to natural factors such as the Earth's orbit, the position of the sun, and volcanic activity, which result in changes in the climate over a longer period of time. Continued and significant human activities are contributing to this global problem. Efforts to reduce greenhouse gas emissions and promote sustainable practices can help mitigate and prevent climate change. Ultimately, reducing emissions and promoting sustainable practices will be necessary to address the issue of climate change. However"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "instruction": "Instruction: Explain the difference between RAM and ROM.\nResponse:",
+      "outputs": [
+        {
+          "model": "meta-llama/Llama-3.2-1B-lora",
+          "strategy": "greedy",
+          "text": "RAM (Random Access Memory) and ROM (Read Only Memory) are two types of non-volatile memory that are commonly used in computers and other electronic devices. They are both types of memory that store data and instructions for the computer to use, but they differ in their functionality and how they are accessed.\n\nRAM is a type of volatile memory, which means it loses its data when the power is turned off. This means that the data stored in RAM is lost when the computer is turned off or restarted. RAM is used to store temporary data and instructions that are needed by the computer to run programs and perform other tasks.\n\nROM, on the"
+        },
+        {
+          "model": "meta-llama/Llama-3.2-1B-lora",
+          "strategy": "temperature_0.7",
+          "text": "RAM (Random Access Memory) and ROM (Read Only Memory) are two types of computer memory used in computers. RAM is volatile, meaning it loses its data when the power is turned off, while ROM is non-volatile, meaning it retains its data even when the power is turned off.\n\nRAM is a type of computer memory that is volatile, which means that it loses its data when the power is turned off, and must be reloaded whenever the computer is restarted. This makes RAM a temporary storage device, as the data stored in it is lost when the power is turned off.\n\nOn the other hand, ROM is designed to retain"
+        },
+        {
+          "model": "meta-llama/Llama-3.2-1B-lora",
+          "strategy": "top_p_0.9",
+          "text": "RAM and ROM are two types of non-volatile memory that are commonly used in electronic devices, but they do have some differences that make them unique.\n\n1. Difference in function: RAM, or random access memory, is used for temporary data storage, and the data is accessed quickly and easily by the computer's central processing unit (CPU). ROM, or read only memory, is used for permanent storage, and its data is not accessible by the CPU, meaning it is read only. \n\n2. Difference in storage capacity: RAM has a much higher storage capacity than ROM, which can hold large amounts of data and is designed for temporary storage"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "instruction": "Instruction: Suggest a weekly workout routine for beginners.\nResponse:",
+      "outputs": [
+        {
+          "model": "meta-llama/Llama-3.2-1B-lora",
+          "strategy": "greedy",
+          "text": "A weekly workout routine for beginners can include the following exercises:\n\n1. Warm-up: Start with a 5-10 minute warm-up to get your heart rate up and loosen up your muscles.\n\n2. Cardio: Choose a cardio exercise that you enjoy and that will help you burn calories and improve your cardiovascular health. Examples include walking, jogging, cycling, or swimming.\n\n3. Strength training: Choose a strength training exercise that targets your major muscle groups. Examples include squats, push-ups, pull-ups, or lunges.\n\n4. Stretching: Stretching is important for maintaining flexibility and preventing injuries. Choose a stretching routine that targets"
+        },
+        {
+          "model": "meta-llama/Llama-3.2-1B-lora",
+          "strategy": "temperature_0.7",
+          "text": "A weekly workout routine for beginners can include the following exercises:\n\n* Cardio exercise: This could include brisk walking, jogging or running for 30 minutes to an hour. This will help increase your heart rate and improve your cardiovascular fitness.\n* Strength training: This could include a combination of resistance exercises that target your upper body, lower body, and core muscles. Examples include push-ups, squats, deadlifts, and planks. This will help tone your muscles and improve your overall strength and endurance.\n* Yoga or stretching: Yoga and stretching are great ways to improve flexibility, reduce stress, and enhance overall well-being. You could start"
+        },
+        {
+          "model": "meta-llama/Llama-3.2-1B-lora",
+          "strategy": "top_p_0.9",
+          "text": "Here is a beginner-friendly workout routine that you can follow over a period of seven days:\n\nDay 1: 30 minutes of cardio (e.g. cycling, jogging, or walking)\nDay 2: 30 minutes of strength training (e.g. lifting weights, squats, or push-ups)\nDay 3: 30 minutes of flexibility (e.g. stretching yoga or pilates)\nDay 4: Rest day\nDay 5: 30 minutes of cardio\nDay 6: Strength training\nDay 7: Flexibility\n\nIt's important to start slowly, listen to your body, and adjust the duration"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "instruction": "Instruction: Describe how a blockchain works in simple terms.\nResponse:",
+      "outputs": [
+        {
+          "model": "meta-llama/Llama-3.2-1B-lora",
+          "strategy": "greedy",
+          "text": "A blockchain is a decentralized, distributed ledger that records transactions in a secure and immutable way. It is a type of distributed database that uses a peer-to-peer network to store and verify transactions. Each transaction is recorded in a block, which is added to the blockchain as new blocks are added to the chain. The blockchain is secured by cryptography, which means that only authorized users can access and modify the data. This makes it difficult for anyone to tamper with the data or change the history of the transactions. The blockchain is used in various industries, including finance, healthcare, and supply chain management, to improve efficiency, security, and transparency."
+        },
+        {
+          "model": "meta-llama/Llama-3.2-1B-lora",
+          "strategy": "temperature_0.7",
+          "text": "A blockchain is a decentralized, distributed digital ledger that records transactions among multiple parties in a secure and orderly manner. It is a way to record and verify transactions without the need for intermediary trust. Each transaction is recorded in blocks, which are chained together to form a long chain of blocks. Each block contains the transaction details and a cryptographic hash of the previous block, providing a way to verify the integrity of the chain. This makes it difficult for an attacker to change or remove transactions from the blockchain, and also makes it difficult for hackers to steal personal or financial information. The blockchain technology uses consensus to ensure that all nodes on the network are reaching"
+        },
+        {
+          "model": "meta-llama/Llama-3.2-1B-lora",
+          "strategy": "top_p_0.9",
+          "text": "A blockchain is a decentralized, distributed database that records transactions in a permanent, verifiable, and tamper-proof way. It uses a combination of encryption, hashing, and consensus mechanisms to ensure the data is secure and transparent. When a user sends or receives a cryptocurrency, it is verified on the blockchain by adding the transaction to the chain. The blockchain is an immutable and unalterable ledger, making it impossible to modify, falsify or manipulate the transaction history.\n\nThe most significant part of the blockchain is its technology, which is built on the principles of cryptography, blockchain, and distributed ledger technology. Cryptography uses complex mathematical algorithms to encrypt"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "instruction": "Instruction: Give advice to someone starting university.\nResponse:",
+      "outputs": [
+        {
+          "model": "meta-llama/Llama-3.2-1B-lora",
+          "strategy": "greedy",
+          "text": "Starting university can be a challenging and exciting time, filled with new experiences and opportunities. Here are some tips to help you navigate the transition and make the most of your time at university:\n\n1. Make a plan: Before you start university, take some time to think about what you want to get out of your time there. What are your goals and aspirations? What courses are you interested in taking? Make a plan of how you want to structure your time at university, and stick to it.\n\n2. Make friends: University is a great place to make new friends, so don't be afraid to reach out and make connections. Attend social"
+        },
+        {
+          "model": "meta-llama/Llama-3.2-1B-lora",
+          "strategy": "temperature_0.7",
+          "text": "1. Take advantage of the support systems available to you: There are numerous resources available to help you succeed at university, including academic advisors, academic support services, and counselling services. Take advantage of these resources to help you stay on track and navigate the academic and social aspects of university.\n\n2. Schedule time for study: It may be tempting to cram everything into one night or weekend, but this can lead to burnout and poor study habits. Instead, set aside specific times for studying, and avoid distractions like social media or television.\n\n3. Follow a schedule: A good academic schedule can help you stay organized and on track. Make"
+        },
+        {
+          "model": "meta-llama/Llama-3.2-1B-lora",
+          "strategy": "top_p_0.9",
+          "text": "I'm sorry to hear that you are starting university. I understand that starting university can be a bit overwhelming, but remember that it's a big step and you will get through it. First, take some time to adjust to the new environment and meet some new people. Join clubs or societies, take up some new activities or sports, and make the most of the campus facilities. Attend lectures and classes, as well as any extra-curricular activities that you are allowed to take part in. Keep in touch with your friends and family and have some fun while you are at university. Remember to stay healthy and take care of yourself, eat well"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "instruction": "Instruction: Explain recursion to a first-year CS student.\nResponse:",
+      "outputs": [
+        {
+          "model": "meta-llama/Llama-3.2-1B-lora",
+          "strategy": "greedy",
+          "text": "Recursion is a fundamental concept in computer science that allows you to solve problems by breaking them down into smaller sub-problems and then combining the solutions of those sub-problems. It is a way of solving a problem by breaking it down into smaller, more manageable pieces, and then solving those pieces recursively.\n\nIn simple terms, recursion is a way of solving a problem by breaking it down into smaller, more manageable pieces, and then solving those pieces recursively. For example, suppose you want to find the sum of all the numbers from 1 to 100. You can use recursion to solve this problem. The first step is to find the"
+        },
+        {
+          "model": "meta-llama/Llama-3.2-1B-lora",
+          "strategy": "temperature_0.7",
+          "text": "Recursion is a powerful mathematical concept that can be used to solve certain types of problems. In computer science, recursion is commonly used in algorithms, and it involves the process of returning a value based on a previous calculation. In general, the idea is that you can solve a problem by breaking it down into smaller sub-problems and then returning the result of the smaller sub-problems.\n\nHere's an example of a recursion problem in computer science:\n\nGiven an array of integers, write a function that returns True if the array contains at least one pair of integers that sum up to zero, and False otherwise.\n\nIn this problem, recursion can be"
+        },
+        {
+          "model": "meta-llama/Llama-3.2-1B-lora",
+          "strategy": "top_p_0.9",
+          "text": "Recursion is a way of solving problems by breaking them down into smaller sub-problems and then solving those smaller sub-problems. This method of problem solving works because it allows us to divide the problem into smaller and more manageable pieces, which allows us to tackle the larger problem more effectively.\n\nIn a simple example, let's say you want to count the number of characters in a string. The most straightforward solution is to count each character individually and then add up the total number of characters. This works fine, but it can get tedious and complicated as the size of the string increases.\n\nA recursive solution would be to use the number of characters"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "instruction": "Instruction: Suggest a budget travel plan for a weekend in a European city.\nResponse:",
+      "outputs": [
+        {
+          "model": "meta-llama/Llama-3.2-1B-lora",
+          "strategy": "greedy",
+          "text": "A budget travel plan for a weekend in a European city could include the following activities:\n\n1. Explore the city's historical landmarks: Start your weekend by visiting the city's most iconic landmarks, such as the Leaning Tower of Pisa, the Colosseum in Rome, or the Notre Dame Cathedral in Paris.\n\n2. Take a walking tour: Take a walking tour of the city to get a better understanding of its history and culture. You can choose from guided tours or self-guided tours, depending on your interests.\n\n3. Visit a museum: Visit a museum or art gallery to learn more about the city's history and culture"
+        },
+        {
+          "model": "meta-llama/Llama-3.2-1B-lora",
+          "strategy": "temperature_0.7",
+          "text": "A budget travel plan for a weekend in a European city could include the following:\n\n1. Book a hotel: Choose a hotel that is centrally located and offers good value for money. Look for options with free breakfast and Wi-Fi access, as these amenities can help you save money on meals.\n\n2. Explore the city: Start your weekend by exploring the city's sights. Plan to visit the main attractions, such as the city center, the historical district, and the museum district. Take a walk and enjoy the natural beauty of the city, especially in the summertime when the weather is pleasant.\n\n3. Visit a museum: Take advantage of"
+        },
+        {
+          "model": "meta-llama/Llama-3.2-1B-lora",
+          "strategy": "top_p_0.9",
+          "text": "Here is a budget travel plan for a weekend in a European city:\n\nDay 1 - Arrive in the city\nTake public transport to reach the city center and explore the city's attractions on foot. Visit one of the famous museums, like the Prado or the Louvre in Paris, or the British Museum or the Victoria and Albert Museum in London. Take a boat ride or stroll along the River Seine in Paris or the Thames in London.\n\nStay in a hostel or a hotel in the city center. Hostels are more affordable than hotels and often have good facilities, including dormitories, breakfast, and a common area for social"
+        }
+      ]
+    }
+  ]
+}
