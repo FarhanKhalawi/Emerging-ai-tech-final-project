@@ -43,7 +43,7 @@
         {
           "model": "meta-llama/Llama-3.2-1B-lora",
           "strategy": "temperature_0.7",
-          "text": "1. Set specific, achievable goals: Break down your long-term study goals into smaller, manageable tasks that can be accomplished every day. This will help keep you motivated and focused throughout the day.\n\n2. Use study techniques: There are many different study techniques that can be used, such as visualization, mnemonics, and note-taking. Find the ones that work best for you and incorporate them into your study schedule.\n\n3. Stay motivated: The most effective study techniques can only help you if you stay motivated and determined to achieve your goals. Make a habit out of setting aside time for study, and remind yourself of the benefits of"
+          "text": "1. Set a clear and specific goal.\nBefore you start studying, make sure you have a clear goal or objective in mind. This will help you focus your efforts and stay motivated throughout the process.\n\n2. Create a study schedule.\nSet aside dedicated time each day or each week to study. This helps you plan your time and ensures that you don't get overwhelmed by too much studying.\n\n3. Use study techniques.\nThere are many effective study techniques available. Some popular ones include using flashcards, outlining information, and using mnemonic devices. Experiment with different techniques to find ones that work best for you. You can also use a study"
         },
         {
           "model": "meta-llama/Llama-3.2-1B-lora",
@@ -69,7 +69,7 @@
         {
           "model": "meta-llama/Llama-3.2-1B-lora",
           "strategy": "top_p_0.9",
-          "text": "A healthy breakfast for a busy student might consist of several simple and easy-to-prepare components, such as the following:\n\n1. Whole Grain Toast with Nut Butter: This can be made ahead of time and stored in a plastic container to make the preparation process quicker. You can pair it with fresh fruit, like sliced strawberries, and a sprinkle of flaked almonds for added nutrition.\n\n2. Oats with Fruit: Oats are a great option for a balanced breakfast as they are high in fiber, protein, and healthy fats. You can mix them with any fresh fruit, such as sliced bananas, and a sprinkle of cinnamon for added flavor"
+          "text": "A healthy breakfast for a busy student might consist of several simple and easy-to-prepare components, such as the following:\n\n1. Whole Grain Toast with Nut Butter: This can be made ahead of time and stored in a plastic container to make the preparation process quicker. You can pair it with fresh fruit, like sliced strawberries, and a sprinkle of flaked almonds for added nutrition.\n\n2. Oats with Fruit: Oats are a low-calorie and high-fiber food, making it an excellent choice for a morning meal. You can mix it with any fresh fruit, such as sliced bananas or sliced peaches, to create a delicious"
         }
       ]
     },
@@ -80,7 +80,7 @@
         {
           "model": "meta-llama/Llama-3.2-1B-lora",
           "strategy": "greedy",
-          "text": "Climate change is caused by a number of factors, including the burning of fossil fuels, deforestation, and the release of greenhouse gases into the atmosphere. These factors contribute to the increase in the Earth's temperature, which can lead to changes in weather patterns, rising sea levels, and other environmental impacts. The main causes of climate change are human activities, such as the burning of fossil fuels and the release of greenhouse gases, which trap heat in the atmosphere, causing it to warm. Other factors include changes in the Earth's orbit, volcanic activity, and the natural cycle of the sun. The effects of climate change can be seen in the rise"
+          "text": "Climate change is caused by a number of factors, including the burning of fossil fuels, deforestation, and the release of greenhouse gases into the atmosphere. These factors contribute to the increase in the Earth's temperature, which can lead to changes in weather patterns, rising sea levels, and other environmental impacts. The main causes of climate change are human activities, such as the burning of fossil fuels and the release of greenhouse gases, which trap heat in the atmosphere, causing it to warm. Other factors include changes in the Earth's orbit, volcanic activity, and the natural cycle of the sun. The effects of climate change can be seen in the form"
         },
         {
           "model": "meta-llama/Llama-3.2-1B-lora",
@@ -90,7 +90,7 @@
         {
           "model": "meta-llama/Llama-3.2-1B-lora",
           "strategy": "top_p_0.9",
-          "text": "Climate change is caused by various factors such as greenhouse gas emissions, deforestation, and human activities. These factors include burning fossil fuels and destroying natural ecosystems, which trap heat in the atmosphere. Climate change also occurs due to natural factors such as the Earth's orbit, the position of the sun, and volcanic activity, which result in changes in the climate over a longer period of time. Continued and significant human activities are contributing to this global problem. Efforts to reduce greenhouse gas emissions and promote sustainable practices can help mitigate and prevent climate change. Ultimately, reducing emissions and promoting sustainable practices will be necessary to address the issue of climate change. However"
+          "text": "Climate change is caused by various factors that have increased the amount of greenhouse gases in the atmosphere, leading to global warming. These factors include:"
         }
       ]
     },
@@ -106,12 +106,12 @@
         {
           "model": "meta-llama/Llama-3.2-1B-lora",
           "strategy": "temperature_0.7",
-          "text": "RAM (Random Access Memory) and ROM (Read Only Memory) are two types of computer memory used in computers. RAM is volatile, meaning it loses its data when the power is turned off, while ROM is non-volatile, meaning it retains its data even when the power is turned off.\n\nRAM is a type of computer memory that is volatile, which means that it loses its data when the power is turned off, and must be reloaded whenever the computer is restarted. This makes RAM a temporary storage device, as the data stored in it is lost when the power is turned off.\n\nOn the other hand, ROM is designed to retain"
+          "text": "RAM and ROM are two types of non-volatile memory that are commonly used in computers. RAM stands for Random-Access Memory, and it is faster than ROM because it can access and store data faster than ROM. RAM is also volatile, which means it loses data when the power is turned off. \n\nOn the other hand, ROM is non-volatile, meaning it doesn't lose data when the power is turned off. ROM is slower than RAM because it can access and store data slower than RAM. ROM is also permanent, which means it cannot be erased or modified. This makes it useful for storing computer programs and data that are not"
         },
         {
           "model": "meta-llama/Llama-3.2-1B-lora",
           "strategy": "top_p_0.9",
-          "text": "RAM and ROM are two types of non-volatile memory that are commonly used in electronic devices, but they do have some differences that make them unique.\n\n1. Difference in function: RAM, or random access memory, is used for temporary data storage, and the data is accessed quickly and easily by the computer's central processing unit (CPU). ROM, or read only memory, is used for permanent storage, and its data is not accessible by the CPU, meaning it is read only. \n\n2. Difference in storage capacity: RAM has a much higher storage capacity than ROM, which can hold large amounts of data and is designed for temporary storage"
+          "text": "RAM, short for random access memory, is a type of electronic memory that can be accessed and modified very quickly, allowing for quick retrieval of data. It is commonly used in computers, laptops, and other electronic devices to store and retrieve information and code, among other things.\n\nROM, short for Read Only Memory, on the other hand, is a type of memory that can only be read but cannot be modified. ROM is used primarily for storing and executing programs or instructions, as it is permanently stored and cannot be changed once it is programmed.\n\nRAM and ROM are the two main types of memory in electronic devices, and their main differences are"
         }
       ]
     },
@@ -127,12 +127,12 @@
         {
           "model": "meta-llama/Llama-3.2-1B-lora",
           "strategy": "temperature_0.7",
-          "text": "A weekly workout routine for beginners can include the following exercises:\n\n* Cardio exercise: This could include brisk walking, jogging or running for 30 minutes to an hour. This will help increase your heart rate and improve your cardiovascular fitness.\n* Strength training: This could include a combination of resistance exercises that target your upper body, lower body, and core muscles. Examples include push-ups, squats, deadlifts, and planks. This will help tone your muscles and improve your overall strength and endurance.\n* Yoga or stretching: Yoga and stretching are great ways to improve flexibility, reduce stress, and enhance overall well-being. You could start"
+          "text": "Here is a suggested weekly workout routine for beginners:\n\nMonday: Cardio Warmup and Strength Training\n- Cardio: 30 minutes of brisk walking or jogging\n- Strength Training: 30 minutes of bodyweight exercises such as push-ups, squats, and lunges\n\nTuesday: Yoga or Pilates\n- Yoga: 1 hour of vinyasa flow yoga\n- Pilates: 1 hour of mat work and a variety of exercises to stretch and strengthen the core, hips, and back\n\nWednesday: Strength Training\n- Strength Training: 30 minutes of weightlifting or resistance training, either using dumbbells or resistance bands"
         },
         {
           "model": "meta-llama/Llama-3.2-1B-lora",
           "strategy": "top_p_0.9",
-          "text": "Here is a beginner-friendly workout routine that you can follow over a period of seven days:\n\nDay 1: 30 minutes of cardio (e.g. cycling, jogging, or walking)\nDay 2: 30 minutes of strength training (e.g. lifting weights, squats, or push-ups)\nDay 3: 30 minutes of flexibility (e.g. stretching yoga or pilates)\nDay 4: Rest day\nDay 5: 30 minutes of cardio\nDay 6: Strength training\nDay 7: Flexibility\n\nIt's important to start slowly, listen to your body, and adjust the duration"
+          "text": "A beginner workout routine can include the following:\n1. Cardio: Start with a 30-minute low-impact cardio session, such as a brisk walk, swimming, or cycling. This will get your heart rate up and help improve your cardiovascular endurance.\n\n2. Strength training: Choose a strength training session that focuses on working your core, glutes, hamstrings, and upper body. You can do squats, lunges, planks, push-ups, or barbell squats. The exercises can be done with light weights or body weight.\n\n3. Yoga: Choose an hour-long yoga class that focuses on calming the mind, increasing"
         }
       ]
     },
@@ -148,12 +148,12 @@
         {
           "model": "meta-llama/Llama-3.2-1B-lora",
           "strategy": "temperature_0.7",
-          "text": "A blockchain is a decentralized, distributed digital ledger that records transactions among multiple parties in a secure and orderly manner. It is a way to record and verify transactions without the need for intermediary trust. Each transaction is recorded in blocks, which are chained together to form a long chain of blocks. Each block contains the transaction details and a cryptographic hash of the previous block, providing a way to verify the integrity of the chain. This makes it difficult for an attacker to change or remove transactions from the blockchain, and also makes it difficult for hackers to steal personal or financial information. The blockchain technology uses consensus to ensure that all nodes on the network are reaching"
+          "text": "A blockchain is a decentralized, digital, and distributed ledger that is used to record transactions and maintain a record of all transactions within a network of computers. The network of computers that make up the blockchain is called a 'layer' or 'layered network', and it works much like a database. A blockchain is created by a series of nodes that are connected to each other through a network. Each node is a computer with its own copy of the blockchain, and it is responsible for verifying and maintaining the integrity of the blockchain. Any time a new transaction is added to the blockchain, it is verified by all the nodes in the network, and"
         },
         {
           "model": "meta-llama/Llama-3.2-1B-lora",
           "strategy": "top_p_0.9",
-          "text": "A blockchain is a decentralized, distributed database that records transactions in a permanent, verifiable, and tamper-proof way. It uses a combination of encryption, hashing, and consensus mechanisms to ensure the data is secure and transparent. When a user sends or receives a cryptocurrency, it is verified on the blockchain by adding the transaction to the chain. The blockchain is an immutable and unalterable ledger, making it impossible to modify, falsify or manipulate the transaction history.\n\nThe most significant part of the blockchain is its technology, which is built on the principles of cryptography, blockchain, and distributed ledger technology. Cryptography uses complex mathematical algorithms to encrypt"
+          "text": "A blockchain is a distributed, secure, and immutable database that records and verifies all transactions made within the network. The network is composed of many interconnected nodes that are connected through a peer-to-peer network. Each node has a copy of the blockchain, which stores all previous transactions, and can also validate and sign transactions. \n\nThe main feature of a blockchain is that it is a distributed ledger, meaning that it has multiple copies of the transactions across different nodes. This makes it resistant to tampering, as even if one node is compromised, it won't be able to tamper with the other copies. Additionally, because the blockchain is immutable,"
         }
       ]
     },
@@ -169,12 +169,12 @@
         {
           "model": "meta-llama/Llama-3.2-1B-lora",
           "strategy": "temperature_0.7",
-          "text": "1. Take advantage of the support systems available to you: There are numerous resources available to help you succeed at university, including academic advisors, academic support services, and counselling services. Take advantage of these resources to help you stay on track and navigate the academic and social aspects of university.\n\n2. Schedule time for study: It may be tempting to cram everything into one night or weekend, but this can lead to burnout and poor study habits. Instead, set aside specific times for studying, and avoid distractions like social media or television.\n\n3. Follow a schedule: A good academic schedule can help you stay organized and on track. Make"
+          "text": "Starting university can be a challenging and exciting time, but it's important to remember that it's a time for growth and self-discovery. Here are some tips to help you make the most of your time at university:\n\n1. Set clear goals and make a plan: Identify what you want to achieve during your time at university and make sure your course and schedule align with your goals. This will help you stay focused and motivated.\n\n2. Build a support system: University can be a social environment, so it's important to find a network of friends and mentors to support you in your studies and in life. Don't hesitate to reach out"
         },
         {
           "model": "meta-llama/Llama-3.2-1B-lora",
           "strategy": "top_p_0.9",
-          "text": "I'm sorry to hear that you are starting university. I understand that starting university can be a bit overwhelming, but remember that it's a big step and you will get through it. First, take some time to adjust to the new environment and meet some new people. Join clubs or societies, take up some new activities or sports, and make the most of the campus facilities. Attend lectures and classes, as well as any extra-curricular activities that you are allowed to take part in. Keep in touch with your friends and family and have some fun while you are at university. Remember to stay healthy and take care of yourself, eat well"
+          "text": "Congratulations on starting university! It's a big step towards your academic goals and career progression. Here are some tips to help you navigate the challenges and achieve your goals.\n\n1. Set realistic expectations: It's important to set realistic expectations for your time at university. Understand that it will take time to adjust to university life and new routines, and that not everything will go according to plan. Learn to manage your time efficiently, make good use of study breaks, and know when to say no to social events or obligations to help you balance your workload.\n\n2. Build a study routine: Create a study routine that works for you. Choose a study"
         }
       ]
     },
@@ -185,17 +185,17 @@
         {
           "model": "meta-llama/Llama-3.2-1B-lora",
           "strategy": "greedy",
-          "text": "Recursion is a fundamental concept in computer science that allows you to solve problems by breaking them down into smaller sub-problems and then combining the solutions of those sub-problems. It is a way of solving a problem by breaking it down into smaller, more manageable pieces, and then solving those pieces recursively.\n\nIn simple terms, recursion is a way of solving a problem by breaking it down into smaller, more manageable pieces, and then solving those pieces recursively. For example, suppose you want to find the sum of all the numbers from 1 to 100. You can use recursion to solve this problem. The first step is to find the"
+          "text": "Recursion is a fundamental concept in computer science that allows you to solve problems by breaking them down into smaller, more manageable pieces. It is a way of solving a problem by breaking it down into smaller sub-problems, and then solving those sub-problems recursively. \n\nIn simple terms, recursion is a way of solving a problem by breaking it down into smaller, more manageable pieces. For example, suppose you want to find the sum of all the numbers from 1 to 100. You can use recursion to solve this problem. \n\nThe first step is to define a recursive function that takes a number as input and returns the sum of"
         },
         {
           "model": "meta-llama/Llama-3.2-1B-lora",
           "strategy": "temperature_0.7",
-          "text": "Recursion is a powerful mathematical concept that can be used to solve certain types of problems. In computer science, recursion is commonly used in algorithms, and it involves the process of returning a value based on a previous calculation. In general, the idea is that you can solve a problem by breaking it down into smaller sub-problems and then returning the result of the smaller sub-problems.\n\nHere's an example of a recursion problem in computer science:\n\nGiven an array of integers, write a function that returns True if the array contains at least one pair of integers that sum up to zero, and False otherwise.\n\nIn this problem, recursion can be"
+          "text": "Recursion is a computational technique that involves calling a function (also known as a recursive function) itself, and calling it again with the result of the first call as an argument. This process continues until the result of the final call is returned, at which point the result is returned to the caller. Recursion is often used to solve problems that are inherently recursive, such as the factorial function (n! = n * (n-1)!) or the Fibonacci sequence (a0 = 0, a1 = 1, a2 = 1, a3 = 2, a4 = 3, a5 ="
         },
         {
           "model": "meta-llama/Llama-3.2-1B-lora",
           "strategy": "top_p_0.9",
-          "text": "Recursion is a way of solving problems by breaking them down into smaller sub-problems and then solving those smaller sub-problems. This method of problem solving works because it allows us to divide the problem into smaller and more manageable pieces, which allows us to tackle the larger problem more effectively.\n\nIn a simple example, let's say you want to count the number of characters in a string. The most straightforward solution is to count each character individually and then add up the total number of characters. This works fine, but it can get tedious and complicated as the size of the string increases.\n\nA recursive solution would be to use the number of characters"
+          "text": "Recursion is a mathematical concept in which a function is defined recursively: by calling itself, returning an intermediate result, and then repeating the process. This process continues until a base case is reached. This is contrasted with iterative functions, which follow a specific algorithm to solve a problem and then terminate.\n\nIn computer science, recursion is commonly used in problem-solving to reduce the number of steps needed to solve a problem. In a typical recursion, a function is written such that it calls itself. When the function is called, it checks for a base case, which is a condition that can be met, and if it is, it returns the"
         }
       ]
     },
@@ -206,17 +206,17 @@
         {
           "model": "meta-llama/Llama-3.2-1B-lora",
           "strategy": "greedy",
-          "text": "A budget travel plan for a weekend in a European city could include the following activities:\n\n1. Explore the city's historical landmarks: Start your weekend by visiting the city's most iconic landmarks, such as the Leaning Tower of Pisa, the Colosseum in Rome, or the Notre Dame Cathedral in Paris.\n\n2. Take a walking tour: Take a walking tour of the city to get a better understanding of its history and culture. You can choose from guided tours or self-guided tours, depending on your interests.\n\n3. Visit a museum: Visit a museum or art gallery to learn more about the city's history and culture"
+          "text": "A budget travel plan for a weekend in a European city could include the following activities:\n\n1. Explore the city's historical landmarks: Start your weekend by visiting the city's most iconic landmarks, such as the Leaning Tower of Pisa, the Colosseum in Rome, or the Notre Dame Cathedral in Paris.\n\n2. Take a walking tour: Take a walking tour of the city to get a better understanding of its history and culture. You can choose from a range of walking tours, including those that focus on art, architecture, or food.\n\n3. Visit a local market: Take a trip to a local market to experience the"
         },
         {
           "model": "meta-llama/Llama-3.2-1B-lora",
           "strategy": "temperature_0.7",
-          "text": "A budget travel plan for a weekend in a European city could include the following:\n\n1. Book a hotel: Choose a hotel that is centrally located and offers good value for money. Look for options with free breakfast and Wi-Fi access, as these amenities can help you save money on meals.\n\n2. Explore the city: Start your weekend by exploring the city's sights. Plan to visit the main attractions, such as the city center, the historical district, and the museum district. Take a walk and enjoy the natural beauty of the city, especially in the summertime when the weather is pleasant.\n\n3. Visit a museum: Take advantage of"
+          "text": "A budget travel plan for a weekend in a European city would depend on the city and the person's interests. Here are some ideas to consider:\n\n1. **Travel by public transportation:** Many European cities have efficient and affordable public transportation systems that can take you around the city. Consider taking the train or bus to get around and explore the city at your own pace.\n\n2. **Visit the city's museums and galleries:** Many European cities have a lot of museums and galleries that offer free or low-cost entry. These can be a great way to learn about the city's history and culture.\n\n3. **Walk along the streets:** Walking is"
         },
         {
           "model": "meta-llama/Llama-3.2-1B-lora",
           "strategy": "top_p_0.9",
-          "text": "Here is a budget travel plan for a weekend in a European city:\n\nDay 1 - Arrive in the city\nTake public transport to reach the city center and explore the city's attractions on foot. Visit one of the famous museums, like the Prado or the Louvre in Paris, or the British Museum or the Victoria and Albert Museum in London. Take a boat ride or stroll along the River Seine in Paris or the Thames in London.\n\nStay in a hostel or a hotel in the city center. Hostels are more affordable than hotels and often have good facilities, including dormitories, breakfast, and a common area for social"
+          "text": "When planning a budget travel plan for a weekend in a European city, it's important to think about what you want to do and how much time you have to spend in each location. Here are some ideas for a budget-friendly weekend trip in a European city:\n\n1. Plan a walking tour of the city center: Many European cities have impressive historical architecture and rich cultural experiences. A good way to explore a city's history and culture is to start at the center, where many museums, parks, and historical monuments are located. You could also add in a visit to a market or market square to see how locals shop and interact.\n\n2."
         }
       ]
     }
